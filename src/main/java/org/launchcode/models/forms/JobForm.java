@@ -70,7 +70,9 @@ public class JobForm {
         return employers;
     }
 
-    //used to get actual employer - otherwise the view just gets an int from the form
+    // Used to get actual employer - otherwise the view just gets an int from the form
+    // Is there another way to do this?
+
     public Employer getEmployerById(int employerId) {
 
         for (Employer employer : employers) {
