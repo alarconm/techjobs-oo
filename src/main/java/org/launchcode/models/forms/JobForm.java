@@ -19,6 +19,7 @@ public class JobForm {
     @Size(min=1, message = "Name may not be empty")
     private String name;
 
+    // Set these all as not null but they are part of a drop-down. Is there any point to this validation?
     @NotNull
     private int employerId;
 
@@ -31,11 +32,6 @@ public class JobForm {
     @NotNull
     private PositionType positionType;
 
-    /*
-        TODO #3 - Included other fields needed to create a job,
-        with correct validation attributes and display names.
-        Don't forget to add getters and setters
-     */
 
     private ArrayList<Employer> employers;
     private ArrayList<Location> locations;
@@ -46,12 +42,7 @@ public class JobForm {
 
         JobData jobData = JobData.getInstance();
 
-
-
-
-        /*
-            TODO #4 - populate the other ArrayList collections needed in the view
-        */
+        // Populate the Arraylists with the data in the psuedo-database JobData so that they can be used
         employers = jobData.getEmployers().findAll();
         locations = jobData.getLocations().findAll();
         coreCompetencies = jobData.getCoreCompetencies().findAll();
@@ -78,6 +69,19 @@ public class JobForm {
     public ArrayList<Employer> getEmployers() {
         return employers;
     }
+
+    //used to get actual employer - otherwise the view just gets an int from the form
+    public Employer getEmployerById(int employerId) {
+
+        for (Employer employer : employers) {
+            if (employer.getId() == employerId)
+                return employer;
+
+        }
+
+        return null;
+    }
+
 
     public void setEmployers(ArrayList<Employer> employers) {
         this.employers = employers;
