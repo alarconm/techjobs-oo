@@ -52,8 +52,13 @@ public class JobController {
         // Create a new job with the information from the form
         // Add job to jobData
         // Display job detail page for the newly created job
-        Job newJob = new Job(jobForm.getName(), jobForm.getEmployerById(jobForm.getEmployerId()),
-                jobForm.getLocation(), jobForm.getPositionType(), jobForm.getCoreCompetency());
+        //TODO Change to JobData.Employers() etc. to get info
+        Job newJob = new Job(
+                jobForm.getName(),
+                jobForm.getEmployerById(jobForm.getEmployerId()),
+                jobForm.getLocation(),
+                jobForm.getPositionType(),
+                jobForm.getCoreCompetency());
 
         jobData.add(newJob);
         model.addAttribute("job", newJob);
